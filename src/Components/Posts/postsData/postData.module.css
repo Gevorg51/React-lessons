@@ -1,0 +1,12 @@
+.posts {
+    color: aqua
+}
+
+.likes {
+    color: greenyellow
+}
+
+.postData {
+    margin-left: 20rem;
+    box-sizing: border-box;
+}

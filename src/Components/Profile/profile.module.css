@@ -1,0 +1,14 @@
+.avatar {
+    border-radius: 6rem;
+    width: 5rem;
+    box-sizing: border-box;
+    margin-left: 42rem;
+    margin-top: 0.8rem;
+    box-shadow: 5px 5px 5px 2px blue;
+}
+
+.profileName {
+    color: white;
+    margin-left: 43rem;
+    box-sizing: border-box;
+}
