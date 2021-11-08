@@ -2,7 +2,7 @@ import React from "react";
 import FriendsItem from './MessagesItem/friendsItem';
 import styles from './message.module.css'
 import MessagesItem from "./MessagesItem/messagesItem";
-import { addNewMessagesActionCreator, addTextActionCreator } from "../../state/state";
+import {sendMessageCreator, updateNewMessageBodyCreator} from "../../state/state";
 
 let Messages = (props) => {
     const friendItem = props.friendsData.friends.map(
@@ -13,16 +13,17 @@ let Messages = (props) => {
         mess => <MessagesItem message={mess.message} id={mess.id} />
     )
 
-    let path = React.createRef()
+    let newMessageBody = props.messageData.newMessageBody;
 
-    let addMessages = () => {
-        props.dispatch(addNewMessagesActionCreator())
+    let onSendMessageClick = () => {
+        props.dispatch(sendMessageCreator())
     }
 
-    let addMessagesText = () => {
-        let newText = path.current.value;
-        props.dispatch(addTextActionCreator(newText))
+    let onNewMessageChange = (event) => {
+        let body = event.target.value;
+        props.dispatch(updateNewMessageBodyCreator(body))
     }
+
 
     return (
         <div className={styles.friends_Messages_Item}>
@@ -37,10 +38,10 @@ let Messages = (props) => {
             </div>
 
             <div>
-                <textarea ref={path} onChange={addMessagesText} value={props.messageData.newMessagesText} ></textarea>
+                <textarea value={newMessageBody} onChange={onNewMessageChange} placeholder={'Add New Text Here...'}/>
             </div>
             <div>
-                <button onClick={addMessages}>Send</button>
+                <button onClick={onSendMessageClick}>Send</button>
             </div>
         </div>
     )

@@ -7,12 +7,12 @@ let Text = (props) => {
     let commentData = props.commentsData.comments.map(
         el => <Comments id={el.id} comment={el.comment} likes={el.likes} />
     )
-    let message = React.createRef();
 
     let addComment = () => {
         props.dispatch(addCommentActionCreator())
     };
-    debugger;
+
+    let message = React.createRef();
 
     let onNewComment = () => {
         let text = message.current.value;

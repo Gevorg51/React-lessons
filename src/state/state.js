@@ -1,3 +1,6 @@
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
+const SEND_MESSAGE = 'SEND_MESSAGE';
+
 let store = {
     _state: {
         commentsData: {
@@ -24,7 +27,7 @@ let store = {
                 { id: 3, message: 'guliguli', },
                 { id: 4, message: 'guliguli', },
             ],
-            newMessagesText: 'Send message here...',
+            newMessageBody: 'Send message here...',
         },
         friendsData: {
             friends: [
@@ -47,7 +50,6 @@ let store = {
     subscribe(observer) {
         this._callSubscriber = observer;
     },
-
     dispatch(action) {
         if (action.type === 'addComment') {
             let newElement = {
@@ -62,17 +64,14 @@ let store = {
             this._state.commentsData.newCommentText = action.newText;
             this._callSubscriber(this._state);
         }
-        if (action.type === 'addMessages') {
-            let newMessages = {
-                id: 5,
-                messages: this._state.messageData.newMessagesText,
-            };
-            this._state.messageData.messages.push(newMessages);
-            this._state.messageData.newMessagesText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === 'addText') {
-            this._state.messageData.newMessagesText = action.addText;
-            this._callSubscriber(this._state);
+        else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+            this._state.messageData.newMessageBody = action.body;
+            this._callSubscriber(this._state)
+        } else if (action.type === SEND_MESSAGE) {
+            let body = this._state.messageData.newMessageBody;
+            this._state.messageData.newMessageBody = '';
+            this._state.messageData.messages.push({ id: 5, message: body })
+            this._callSubscriber(this._state)
         }
     }
 };
@@ -81,9 +80,9 @@ export const addCommentActionCreator = () => ({ type: 'addComment' });
 
 export const addNewTextActionCreator = (newText) => ({ type: 'addNewText', newText: newText });
 
-export const addNewMessagesActionCreator = () => ({ type: 'addMessages' });
+export const sendMessageCreator = () => ({ type: SEND_MESSAGE })
 
-export const addTextActionCreator = () => ({ type: 'addText', message: 'addtext' })
+export const updateNewMessageBodyCreator = (body) => ({ type: UPDATE_NEW_MESSAGE_BODY, body: body })
 
 window.store = store;
 
