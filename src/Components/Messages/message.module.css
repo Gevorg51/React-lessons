@@ -1,0 +1,14 @@
+.friends_Messages_Item {
+        display: grid;
+        grid-template-columns: 2fr 10fr;
+        padding: 1rem;
+}
+
+.friendsList {
+        display: grid;
+        padding-top: 17px
+}
+
+.messagesList {
+        color: #00ffff;
+}

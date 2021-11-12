@@ -1,0 +1,13 @@
+.header {
+    grid-area: h;
+    background-color: black;
+    width: 1423px;
+}
+
+.logo {
+    width: 7.3rem;
+    padding-left: 1.3rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    border-radius: 5000px;
+}
