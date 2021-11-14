@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './text.module.css';
 import Comments from './../Comments/comments';
-import { addCommentActionCreator, addNewTextActionCreator } from '../../../state/state'
+import { addCommentActionCreator, addNewTextActionCreator } from '../../../state/commentsData-reducer'
 
 let Text = (props) => {
     let commentData = props.commentsData.comments.map(

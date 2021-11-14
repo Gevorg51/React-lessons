@@ -1,20 +1,30 @@
-const ADD_COMMENT = "ADD_COMMENT"
+const ADD_COMMENT = "ADD_COMMENT";
+const ADD_NEW_TEXT = "ADD_NEW_TEXT"
 
 const commentsReducer = (state, action) => {
 
-    if (action.type === 'addComment') {
-        let newElement = {
-            id: 5,
-            comment: this._state.commentsData.newCommentText,
-            likes: 0,
-        };
-        this._state.commentsData.comments.push(newElement);
-        this._state.commentsData.newCommentText = '';
-        this._callSubscriber(this._state);
-    } else if (action.type === 'addNewText') {
-        this._state.commentsData.newCommentText = action.newText;
-        this._callSubscriber(this._state);
+    switch (action.type) {
+        case ADD_COMMENT:
+            let newElement = {
+                id: 5,
+                comment: state.newCommentText,
+                likes: 0,
+            };
+            state.comments.push(newElement);
+            state.newCommentText = '';
+            return state;
+
+        case ADD_NEW_TEXT:
+            state.newCommentText = action.newText;
+            return state;
+
+        default:
+            return state;
     }
 
-    return state;
 }
+
+export const addCommentActionCreator = () => ({ type: ADD_COMMENT });
+export const addNewTextActionCreator = (newText) => ({ type: ADD_NEW_TEXT, newText: newText });
+
+export default commentsReducer;

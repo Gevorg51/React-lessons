@@ -2,7 +2,7 @@ import React from "react";
 import FriendsItem from './MessagesItem/friendsItem';
 import styles from './message.module.css'
 import MessagesItem from "./MessagesItem/messagesItem";
-import {sendMessageCreator, updateNewMessageBodyCreator} from "../../state/state";
+import {sendMessageCreator, updateNewMessageBodyCreator} from "../../state/messageReducer";
 
 let Messages = (props) => {
     const friendItem = props.friendsData.friends.map(
