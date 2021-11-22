@@ -1,7 +1,17 @@
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
 const SEND_MESSAGE = 'SEND_MESSAGE';
 
-let messageReducer = (state, action) => {
+let initialState = {
+    messages: [
+        { id: 1, message: 'guliguli', },
+        { id: 2, message: 'guliguli', },
+        { id: 3, message: 'guliguli', },
+        { id: 4, message: 'guliguli', },
+    ],
+    newMessageBody: 'Send message here...',
+}
+
+let messageReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY:
             state.newMessageBody = action.body;

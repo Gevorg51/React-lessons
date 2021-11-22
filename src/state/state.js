@@ -54,8 +54,6 @@ let store = {
     dispatch(action) {
 
         this._state.commentsData = commentsReducer(this._state.commentsData, action)
-        this._callSubscriber(this._state)
-
         this._state.messageData = messageReducer(this._state.messageData, action)
         this._callSubscriber(this._state)
     }
