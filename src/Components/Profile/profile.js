@@ -1,13 +1,8 @@
 import React from "react";
 import styles from './profile.module.css';
-import Text from './ProfileTextArea/Text';
-// import Comments from './Comments/comments'
+import TextContainer from "./ProfileTextArea/TextContainer";
 
-let Profile = (props) => {
-    // let commentData = props.state.comments.map(
-    //     el => <Comments id={el.id} comment={el.comment} likes={el.likes}/>
-    // )
-   
+let Profile = (props) => { 
     return (
         <div>
             <div>
@@ -19,8 +14,8 @@ let Profile = (props) => {
             </div>
             
             <div>
-                <Text dispatch={props.dispatch} commentsData={props.commentsData} newCommentText={props.commentsData.newCommentText} />            
-                {/* {commentData} */}
+
+                <TextContainer store={props.store} />
 
             </div>
         </div>

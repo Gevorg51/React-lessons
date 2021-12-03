@@ -2,26 +2,26 @@ import React from "react";
 import FriendsItem from './MessagesItem/friendsItem';
 import styles from './message.module.css'
 import MessagesItem from "./MessagesItem/messagesItem";
-import {sendMessageCreator, updateNewMessageBodyCreator} from "../../state/messageReducer";
 
 let Messages = (props) => {
-    const friendItem = props.friendsData.friends.map(
+    debugger;
+    const friendItem = props.friends.map(
         el => <FriendsItem name={el.name} id={el.id} />
     )
 
-    const messageItem = props.messageData.messages.map(
+    const messageItem = props.messages.map(
         mess => <MessagesItem message={mess.message} id={mess.id} />
     )
 
-    let newMessageBody = props.messageData.newMessageBody;
+    let newMessageBody = props.newMessageBody;
 
     let onSendMessageClick = () => {
-        props.dispatch(sendMessageCreator())
+        props.onSendMessageClick()
     }
 
     let onNewMessageChange = (event) => {
         let body = event.target.value;
-        props.dispatch(updateNewMessageBodyCreator(body))
+        props.onNewMessageChange(body);
     }
 
 
