@@ -5,12 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-browser-router';
 import store from './state/redux-store';
+import { Provider } from 'react-redux';
 
-export let rerenderEntireTree = (state) => {
-    debugger
+export let rerenderEntireTree = () => {
   ReactDOM.render(
-    <BrowserRouter >
-      <App store={store} dispatch={store.dispatch.bind(store)} state={state}/>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>,
     document.getElementById('root')
   );
@@ -19,8 +21,8 @@ export let rerenderEntireTree = (state) => {
 rerenderEntireTree(store.getState());
 
 store.subscribe(() => {
-    let state = store.getState();
-    rerenderEntireTree(state)
+  let state = store.getState();
+  rerenderEntireTree(state)
 });
 
 

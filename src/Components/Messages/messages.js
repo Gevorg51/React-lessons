@@ -4,7 +4,6 @@ import styles from './message.module.css'
 import MessagesItem from "./MessagesItem/messagesItem";
 
 let Messages = (props) => {
-    debugger;
     const friendItem = props.friends.map(
         el => <FriendsItem name={el.name} id={el.id} />
     )

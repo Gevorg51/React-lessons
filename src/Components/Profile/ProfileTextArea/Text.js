@@ -3,8 +3,6 @@ import styles from './text.module.css';
 import Comments from './../Comments/comments';
 
 let Text = (props) => {
-    debugger;
-
     let commentData = props.comments.map(
         el => <Comments id={el.id} comment={el.comment} likes={el.likes} />
     )

@@ -5,9 +5,9 @@ import Profile from './Components/Profile/profile';
 import NavBar from './Components/NavBar/navBar';
 import Menu from './Components/Menu/menu';
 import Friends from './Components/Friends/friends';
-import Posts from './Components/Posts/posts';
 import { Route } from 'react-router';
 import MessagesContainer from "./Components/Messages/messagesContainer";
+import PostsContainer from "./Components/Posts/postsContainer ";
 
 const App = (props) => {
     // debugger;
@@ -20,7 +20,7 @@ const App = (props) => {
         <Route path='/Menu' render={() => <Menu />} />
         <Route path='/Friends' render={() => <Friends />}/>
         <Route path='/Messages' render={() => <MessagesContainer store={props.store}/>}/>
-        <Route path='/Posts' render={() => <Posts state={props.state.postData}/>}/>
+        <Route path='/Posts' render={() => <PostsContainer store={props.store}/>}/>
         </div>
     </div>
   );

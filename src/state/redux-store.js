@@ -7,7 +7,7 @@ import friendsReducer from "./frinedsData-reducer";
 let reducers = combineReducers({
     commentsData: commentsReducer,
     messageData: messageReducer,
-    postData: postReducer,
+    postsData: postReducer,
     friendsData: friendsReducer,
 })
 
