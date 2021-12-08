@@ -1,4 +1,4 @@
-import {combineReducers, createStore} from "redux";
+import { combineReducers, createStore } from "redux";
 import commentsReducer from "./commentsData-reducer";
 import messageReducer from "./messageReducer";
 import postReducer from "./postData-reducer";

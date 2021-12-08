@@ -14,19 +14,20 @@ let initialState = {
 const commentsReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_COMMENT:
-            let newElement = {
-                id: 5,
-                comment: state.newCommentText,
-                likes: 0,
+        case ADD_COMMENT: {
+            return {
+                ...state,
+                comments: [...state.comments,{ id: 5,comment: state.newCommentText,likes: 0,}],
+                newCommentText: ''
             };
-            state.comments.push(newElement);
-            state.newCommentText = '';
-            return state;
+        }
 
-        case ADD_NEW_TEXT:
-            state.newCommentText = action.newText;
-            return state;
+        case ADD_NEW_TEXT: {
+            return {
+                ...state,
+                newCommentText: action.newText
+            }
+        }
 
         default:
             return state;

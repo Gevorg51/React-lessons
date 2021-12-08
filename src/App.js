@@ -7,7 +7,8 @@ import Menu from './Components/Menu/menu';
 import Friends from './Components/Friends/friends';
 import { Route } from 'react-router';
 import MessagesContainer from "./Components/Messages/messagesContainer";
-import PostsContainer from "./Components/Posts/postsContainer ";
+import PostsContainer from "./Components/Posts/postsContainer";
+
 
 const App = (props) => {
     // debugger;
