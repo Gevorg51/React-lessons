@@ -12,7 +12,7 @@ let NavBar = () => {
                 <NavLink to='./Menu' className={styles.item} activeClassName={styles.active}> Menu </NavLink>
             </div>
             <div>
-                <NavLink to='./Friends' className={styles.item} activeClassName={styles.active}> Friends </NavLink>
+                <NavLink to='./Users' className={styles.item} activeClassName={styles.active}> Users </NavLink>
             </div>
             <div>
                 <NavLink to='./Messages' className={styles.item} activeClassName={styles.active}> Messages </NavLink>

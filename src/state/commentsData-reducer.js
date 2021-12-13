@@ -12,22 +12,19 @@ let initialState = {
 
 
 const commentsReducer = (state = initialState, action) => {
-
     switch (action.type) {
-        case ADD_COMMENT: {
+        case ADD_COMMENT: 
             return {
                 ...state,
                 comments: [...state.comments,{ id: 5,comment: state.newCommentText,likes: 0,}],
                 newCommentText: ''
             };
-        }
-
-        case ADD_NEW_TEXT: {
+        
+        case ADD_NEW_TEXT: 
             return {
                 ...state,
                 newCommentText: action.newText
-            }
-        }
+            };
 
         default:
             return state;
