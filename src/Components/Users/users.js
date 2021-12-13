@@ -3,7 +3,7 @@ import React from "react";
 let Users = () => {
     return(
         <div>
-            THIS IS MY  FRIENDS LIST!! BOII!
+            <p>users</p>
         </div>
     )
 }

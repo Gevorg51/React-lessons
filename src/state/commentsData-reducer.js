@@ -6,7 +6,7 @@ let initialState = {
         { id: 1, comment: 'Its sunny today!!', likes: 12 },
         { id: 2, comment: 'Feeling bad today..!', likes: 5 },
         { id: 3, comment: 'Have many things to do!!!', likes: 7 },
-    ],
+    ], 
     newCommentText: 'Your new status here...',
 }
 
