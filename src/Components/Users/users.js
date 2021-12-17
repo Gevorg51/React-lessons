@@ -1,9 +1,10 @@
 import React from "react";
 
-let Users = () => {
-    return(
+let Users = (props) => {
+    debugger;
+    return (
         <div>
-            <p>users</p>
+            
         </div>
     )
 }
