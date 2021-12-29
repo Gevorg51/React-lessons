@@ -1,29 +1,28 @@
 import { connect } from "react-redux";
-import { UNFOLLOWAC, FOLLOWAC, SET_USERSAC} from "../../state/user-reducer";
-import Users from "./users";
+import { unfollowAC, followAC, setUsersAC} from "../../state/user-reducer";
+import UsersCLS from "./usersCLS";
 
 let mapStateToProps = (state) => {
     return {
         users: state.usersData.users,
     }
 }
-
 let mapDispatchToProps = (dispatch) => {
     return {
         follow: (userId) => {
-            dispatch(FOLLOWAC(userId))
+            dispatch(followAC(userId))
         },
 
         unFollow: (userId) => {
-            dispatch(UNFOLLOWAC(userId))
+            dispatch(unfollowAC(userId))
         },
 
         setUsers: (users) => {
-            dispatch(SET_USERSAC(users))
+            dispatch(setUsersAC(users))
         }
     }
 }
 
-let usersContainer = connect(mapStateToProps, mapDispatchToProps)(Users)
+let usersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersCLS)
 
 export default usersContainer

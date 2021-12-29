@@ -2,6 +2,7 @@ import React from "react";
 import {sendMessageCreator, updateNewMessageBodyCreator} from "../../state/messageReducer";
 import Messages from "./messages";
 import {connect} from "react-redux";
+
 //
 // let MessagesContainer = (props) => {
 //     let store = props.store.getState();

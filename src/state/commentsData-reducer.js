@@ -8,7 +8,7 @@ let initialState = {
         { id: 3, comment: 'Have many things to do!!!', likes: 7 },
     ], 
     newCommentText: 'Your new status here...',
-}
+};
 
 
 const commentsReducer = (state = initialState, action) => {
@@ -31,7 +31,7 @@ const commentsReducer = (state = initialState, action) => {
             return state;
     }
 
-}
+};
 
 export const addCommentActionCreator = () => ({ type: ADD_COMMENT });
 export const addNewTextActionCreator = (newText) => ({ type: ADD_NEW_TEXT, newText: newText });

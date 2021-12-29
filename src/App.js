@@ -17,11 +17,11 @@ const App = (props) => {
       <Header />
       <NavBar />
       <div className="app_wrapper_content">
-        <Route path='/Profile' render={() => <Profile store={props.store}/>}/>
+        <Route path='/Profile' render={() => <Profile />}/>
         <Route path='/Menu' render={() => <Menu />} />
-        <Route path='/Users' render={() => <UsersContainer store={props.store}/>}/>
-        <Route path='/Messages' render={() => <MessagesContainer store={props.store}/>}/>
-        <Route path='/Posts' render={() => <PostsContainer store={props.store}/>}/>
+        <Route path='/Users' render={() => <UsersContainer />}/>
+        <Route path='/Messages' render={() => <MessagesContainer />}/>
+        <Route path='/Posts' render={() => <PostsContainer />}/>
         </div>
     </div>
   );

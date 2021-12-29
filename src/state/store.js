@@ -56,7 +56,7 @@ let store = {
         this._state.commentsData = commentsReducer(this._state.commentsData, action)
         this._state.messageData = messageReducer(this._state.messageData, action)
         this._callSubscriber(this._state)
-    }
+    },
 };
 
 window.store = store;
