@@ -1,17 +1,21 @@
-import React from "react";
-import Posts from './posts'
-import {connect} from "react-redux";
+import PostsCls from "./postsCls";
+import { connect } from "react-redux";
+import { postsAC } from "../../state/postData-reducer";
 
 let mapStateToProps = (state) => {
     return {
-        postsData: state.postsData
+        postsData: state.postsData.posts
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        setPosts: (posts) => {
+            dispatch(postsAC(posts))
+        }
+    }
 }
 
-let PostsContainer = connect(mapStateToProps, mapDispatchToProps)(Posts);
+let PostsContainer = connect(mapStateToProps, mapDispatchToProps)(PostsCls);
 
 export default PostsContainer;

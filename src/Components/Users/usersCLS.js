@@ -1,16 +1,21 @@
 import * as axios from "axios";
 import React from "react";
-import userPhoto from "../../assets/images/user.png"
 
 class Users extends React.Component {
 
-    constructor (props) {
-        super(props)
-        if (this.props.users.length === 0) {
-            axios.get("https://jsonplaceholder.typicode.com/users").then(response => {
-                props.setUsers(response.data)
-            });
-        }
+    // constructor (props) {
+    //     super(props)
+    //     if (this.props.users.length === 0) {
+    //         axios.get("https://jsonplaceholder.typicode.com/users").then(response => {
+    //             props.setUsers(response.data)
+    //         });
+    //     }
+    // }
+
+    componentDidMount() {
+        axios.get("https://jsonplaceholder.typicode.com/users").then(response => {
+            this.props.setUsers(response.data)
+        });
     }
 
     render() {
@@ -37,8 +42,8 @@ class Users extends React.Component {
                     </span>
 
                     <span>
-                        <div>{}</div>
-                        <div>{}</div>
+                        <div>{ }</div>
+                        <div>{ }</div>
                     </span>
                 </div>)}
             </div>

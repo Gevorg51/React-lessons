@@ -1,16 +1,16 @@
-import React from "react";
-import PostsData from "./postsData/postsData"
+// import React from "react";
+// import PostsData from "./postsData/postsData"
 
-let Posts = (props) => {
-    let postData = props.postsData.posts.map(
-        el => <PostsData id={el.id} post={el.post} likes={el.likes} />
-    )
+// let Posts = (props) => {
+//     let postData = props.postsData.posts.map(
+//         el => <PostsData id={el.id} post={el.post} likes={el.likes} />
+//     )
 
-    return (
-        <div>
-            {postData}
-        </div>
-    )
-}
+//     return (
+//         <div>
+//             {postData}
+//         </div>
+//     )
+// }
 
-export default Posts;
+// export default Posts;
