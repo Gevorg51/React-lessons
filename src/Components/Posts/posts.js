@@ -1,16 +1,45 @@
-// import React from "react";
-// import PostsData from "./postsData/postsData"
+import React from "react";
+import styles from './posts.module.css'
 
-// let Posts = (props) => {
-//     let postData = props.postsData.posts.map(
-//         el => <PostsData id={el.id} post={el.post} likes={el.likes} />
-//     )
+let Posts = (props) => {
 
-//     return (
-//         <div>
-//             {postData}
-//         </div>
-//     )
-// }
+    let postsCount = Math.ceil(props.totalPostsCount / props.pagesSize);
+    let pages = [];
 
-// export default Posts;
+    for (let i = 1; i <= postsCount; i++) {
+        pages.push(i);
+    };
+    
+    return (
+        <div>
+            <div>
+                {pages.map(p => {
+                    return <span className={props.currentPage === p && styles.active}
+                        onClick={() => { props.onPageChage(p) }} >{p}</span>
+                })}
+
+            </div>
+
+            {props.postsData.map(p => <div key={p.key}>
+                <span>
+                    <div className={styles.postsId}>
+                        {p.id}
+                    </div>
+                </span>
+                <span>
+                    <div className={styles.postsTitle}>
+                        {p.title}
+                    </div>
+                </span>
+                <span>
+                    <div className={styles.postsBody}>
+                        {p.body}
+                    </div>
+                </span>
+
+            </div>)}
+        </div>
+    )
+}
+
+export default Posts
