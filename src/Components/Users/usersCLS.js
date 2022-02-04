@@ -3,17 +3,8 @@ import React from "react";
 
 class Users extends React.Component {
 
-    // constructor (props) {
-    //     super(props)
-    //     if (this.props.users.length === 0) {
-    //         axios.get("https://jsonplaceholder.typicode.com/users").then(response => {
-    //             props.setUsers(response.data)
-    //         });
-    //     }
-    // }
-
     componentDidMount() {
-        axios.get("https://jsonplaceholder.typicode.com/users").then(response => {
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
             this.props.setUsers(response.data)
         });
     }

@@ -1,32 +1,39 @@
 import React from "react";
 import { connect } from "react-redux";
-import { postsAC } from "../../state/postData-reducer";
-import { setCurrentPageAC } from "../../state/postData-reducer";
+import { postsAC, setCurrentPageAC, isFetchedAC} from "../../state/postData-reducer";
+import Loader from "../common/loader/loader";
 import Posts from "./posts";
 import * as axios from 'axios';
 
 
 class PostsCls extends React.Component {
     componentDidMount() {
+        this.props.setFetching(true);
         axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${this.props.currentPage}&count${this.props.pagesSize}`).then(response => {
+            this.props.setFetching(false);
             this.props.setPosts(response.data)
         })
     }
 
-    onPageChage = (pageNumber) => {
+    onPageChange = (pageNumber) => {
+        this.props.setFetching(true);
         this.props.setCurrentPage(pageNumber);
 
         axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${pageNumber}&count${this.props.pagesSize}`).then(response => {
+            this.props.setFetching(false);
             this.props.setPosts(response.data)
         });
     }
 
     render() {
-        return <Posts totalPostsCount={this.props.totalPostsCount}
-                      pagesSize={this.props.pagesSize} 
-                      currentPage={this.props.currentPage}
-                      postsData={this.props.postsData}
-                      onPageChage={this.onPageChage}/>
+        return <>
+            {this.props.isFetched ? <Loader /> : null}
+            <Posts totalPostsCount={this.props.totalPostsCount}
+                pagesSize={this.props.pagesSize}
+                currentPage={this.props.currentPage}
+                postsData={this.props.postsData}
+                onPageChange={this.onPageChange} />
+        </>
     }
 }
 
@@ -39,17 +46,25 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        setPosts: (posts) => {
-            dispatch(postsAC(posts))
-        },
-        setCurrentPage: (pageNumber) => {
-            dispatch(setCurrentPageAC(pageNumber))
-        },
-    }
-}
+// let mapDispatchToProps = (dispatch) => {
+//     return {
+//         setPosts: (posts) => {
+//             dispatch(postsAC(posts))
+//         },
+//         setCurrentPage: (pageNumber) => {
+//             dispatch(setCurrentPageAC(pageNumber))
+//         },
+//         setFetching: (isFetched) => {
+//             dispatch(isFetchedAC(isFetched))
+//         },
+//     }
+// }
 
-let PostsContainer = connect(mapStateToProps, mapDispatchToProps)(PostsCls);
+let PostsContainer = connect(mapStateToProps, {
+        setPosts: postsAC,
+        setCurrentPage: setCurrentPageAC,
+        setFetching: isFetchedAC,
+        },
+)(PostsCls);
 
 export default PostsContainer;

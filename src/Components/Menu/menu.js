@@ -1,6 +1,6 @@
 import React from "react";
 
-let Menu = () => {
+let Menu = (props) => {
     return (
         <div> Menu </div>
     )

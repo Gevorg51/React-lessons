@@ -7,6 +7,7 @@ let Messages = (props) => {
     const friendItem = props.friends.map(
         el => <FriendsItem name={el.name} id={el.id} />
     )
+    debugger
 
     const messageItem = props.messages.map(
         mess => <MessagesItem message={mess.message} id={mess.id} />

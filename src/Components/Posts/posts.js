@@ -15,7 +15,7 @@ let Posts = (props) => {
             <div>
                 {pages.map(p => {
                     return <span className={props.currentPage === p && styles.active}
-                        onClick={() => { props.onPageChage(p) }} >{p}</span>
+                        onClick={() => { props.onPageChange(p) }} >{p}</span>
                 })}
 
             </div>
