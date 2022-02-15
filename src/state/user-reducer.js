@@ -3,20 +3,7 @@ let UNFOLLOW = "UNFOLLOW";
 let SET_USERS = "SET_USERS";
 
 let initialState = {
-    users: [
-        // {
-        //      id: 1, photoUrl: 'https://www.discordavatars.com/wp-content/uploads/2020/05/369512270289436673.jpg',
-        //     followed: 'true', fullName: 'Gevorg', status: 'lok', location: { city: 'Abovyan', country: 'Armenia' }
-        // },
-        // {
-        //     id: 2, photoUrl: 'https://www.discordavatars.com/wp-content/uploads/2020/05/369512270289436673.jpg',
-        //     followed: 'false', fullName: 'John', status: 'lok', location: { city: 'California', country: 'United States' }
-        // },
-        // {
-        //     id: 3, photoUrl: 'https://www.discordavatars.com/wp-content/uploads/2020/05/369512270289436673.jpg',
-        //     followed: 'true', fullName: 'Jennifer', status: 'lok', location: { city: 'Paris', country: 'France' }
-        // },
-    ]
+    users: [ ]
 }
 
 let userReducer = (state = initialState, action) => {

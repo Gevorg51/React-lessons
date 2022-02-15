@@ -4,6 +4,7 @@ import messageReducer from "./messageReducer";
 import postReducer from "./postData-reducer";
 import friendsReducer from "./frinedsData-reducer";
 import userReducer from "./user-reducer";
+import profileReducer from "./pofileData-reducer";
 
 let reducers = combineReducers({
     commentsData: commentsReducer,
@@ -11,8 +12,11 @@ let reducers = combineReducers({
     postsData: postReducer,
     friendsData: friendsReducer,
     usersData: userReducer,
+    profileData: profileReducer
 })
 
 let store = createStore(reducers);
+
+window.store = store
 
 export default store;
