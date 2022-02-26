@@ -4,7 +4,7 @@ import messageReducer from "./messageReducer";
 import postReducer from "./postData-reducer";
 import friendsReducer from "./frinedsData-reducer";
 import userReducer from "./user-reducer";
-import profileReducer from "./pofileData-reducer";
+import profileReducer from "./profileData-reducer";
 
 let reducers = combineReducers({
     commentsData: commentsReducer,

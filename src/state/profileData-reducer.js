@@ -7,7 +7,7 @@ let initialState = {
 let profileReducer = (state = initialState, action) => {
     switch (action.type) {
         
-        case setUserProfileAC: {
+        case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
         default: return state                
