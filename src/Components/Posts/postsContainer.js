@@ -1,33 +1,32 @@
-import React from "react";
-import { connect } from "react-redux";
-import { postsAC, setCurrentPageAC, isFetchedAC} from "../../state/postData-reducer";
-import Loader from "../common/loader/loader";
-import Posts from "./posts";
+import React from 'react';
+import { connect } from 'react-redux';
+import { postsAC, setCurrentPageAC, setIsFetchingAC} from '../../state/postData-reducer';
+import Posts from './posts';
 import * as axios from 'axios';
+import Preloader from '../common/preLoader/Preloader';
 
 
 class PostsCls extends React.Component {
     componentDidMount() {
-        this.props.setFetching(true);
+        this.props.setIsFetching(true)
         axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${this.props.currentPage}&count${this.props.pagesSize}`).then(response => {
-            this.props.setFetching(false);
+            this.props.setIsFetching(false)
             this.props.setPosts(response.data)
         })
     }
 
     onPageChange = (pageNumber) => {
-        this.props.setFetching(true);
         this.props.setCurrentPage(pageNumber);
-
+        this.props.setIsFetching(true)
         axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${pageNumber}&count${this.props.pagesSize}`).then(response => {
-            this.props.setFetching(false);
+            this.props.setIsFetching(false)
             this.props.setPosts(response.data)
         });
     }
 
     render() {
         return <>
-            {this.props.isFetched ? <Loader /> : null}
+            {this.props.isFetching ? <Preloader/>: null}
             <Posts totalPostsCount={this.props.totalPostsCount}
                 pagesSize={this.props.pagesSize}
                 currentPage={this.props.currentPage}
@@ -43,6 +42,7 @@ let mapStateToProps = (state) => {
         pagesSize: state.postsData.pagesSize,
         totalPostsCount: state.postsData.totalPostsCount,
         currentPage: state.postsData.currentPage,
+        isFetching: state.postsData.isFetching,
     }
 }
 
@@ -63,7 +63,7 @@ let mapStateToProps = (state) => {
 let PostsContainer = connect(mapStateToProps, {
         setPosts: postsAC,
         setCurrentPage: setCurrentPageAC,
-        setFetching: isFetchedAC,
+        setIsFetching: setIsFetchingAC,
         },
 )(PostsCls);
 

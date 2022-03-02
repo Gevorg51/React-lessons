@@ -3,7 +3,7 @@ let UNFOLLOW = "UNFOLLOW";
 let SET_USERS = "SET_USERS";
 
 let initialState = {
-    users: [ ]
+    users: [ ],
 }
 
 let userReducer = (state = initialState, action) => {
