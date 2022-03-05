@@ -9,7 +9,7 @@ let Users = (props) => {
             {props.users.map(u => <div key={u.key}>
                 <span>
                     <div>
-                        <NavLink to={'/Profile/*' + u.id}>
+                        <NavLink to={'/Profile/' + u.id}>
                             <img className={styles.avatar} src='https://www.kindpng.com/picc/m/24-244605_pink-guy-png-transparent-pink-guy-png-png.png' />
                         </NavLink>
                     </div>
