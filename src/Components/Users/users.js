@@ -1,16 +1,20 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from './users.module.css'
+import userPhoto from '../../assets/images/user.png'
+import Preloader from '../common/preLoader/Preloader';
 
 let Users = (props) => {
-
+    if (!props.users) {
+        <Preloader />
+    }
     return (
         <div>
             {props.users.map(u => <div key={u.key}>
                 <span>
                     <div>
                         <NavLink to={'/Profile/' + u.id}>
-                            <img className={styles.avatar} src='https://www.kindpng.com/picc/m/24-244605_pink-guy-png-transparent-pink-guy-png-png.png' />
+                            <img className={styles.avatar} src={u.photos.large != null ? u.photos.large : userPhoto} alt='avatar'/>
                         </NavLink>
                     </div>
                 </span>
@@ -25,13 +29,9 @@ let Users = (props) => {
 
                 <span>
                     <div>{u.name}</div>
-                    <div>{u.username}</div>
+                    <div>{u.id}</div>
                 </span>
 
-                <span>
-                    <div>{ }</div>
-                    <div>{ }</div>
-                </span>
             </div>)}
         </div>
     )

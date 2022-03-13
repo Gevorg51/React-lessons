@@ -11,3 +11,7 @@
     padding-bottom: 0.6rem;
     border-radius: 5000px;
 }
+
+.loginBlock {
+    float: right;
+}

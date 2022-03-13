@@ -1,24 +1,31 @@
 import React from 'react';
 import * as axios from 'axios'
 import { connect } from "react-redux";
-import { unfollowAC, followAC, setUsersAC } from "../../state/user-reducer";
+import { unfollowAC, followAC, setUsersAC, setIsFetchingAC } from "../../state/user-reducer";
 import Users from "./users";
+import Preloader from '../common/preLoader/Preloader';
 
 class UsersCLS extends React.Component {
     componentDidMount() {
-        axios.get("https://jsonplaceholder.typicode.com/users").then(response => {
-            this.props.setUsers(response.data)
+        this.props.setIsFetching(true)
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+            this.props.setIsFetching(false) 
+            this.props.setUsers(response.data.items)
         });
     };
 
     render() {
-        return <Users {...this.props}/>
+        return<>
+            {this.props.isFetching ? <Preloader /> : null} 
+            <Users {...this.props}/> 
+        </>
     }
 };
 
 let mapStateToProps = (state) => {
     return {
         users: state.usersData.users,
+        isFetching: state.postsData.isFetching,
     }
 }
 
@@ -34,6 +41,10 @@ let mapDispatchToProps = (dispatch) => {
 
         setUsers: (users) => {
             dispatch(setUsersAC(users))
+        },
+
+        setIsFetching: (isFetching) => {
+            dispatch(setIsFetchingAC(isFetching))
         }
     }
 }

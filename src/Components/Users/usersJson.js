@@ -1,4 +1,4 @@
-[
+export const stockData = [
   {
     "balance": "$3,946.45",
     "picture": "http://placehold.it/32x32",
