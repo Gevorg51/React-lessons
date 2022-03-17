@@ -10,7 +10,7 @@ let Header = (props) => {
             </header>
 
             <div className={styles.loginBlock}>
-                <NavLink to={'/login'}>LOGIN</NavLink>
+                {props.isAuth ? props.login : <NavLink to={'/login'}>LOGIN</NavLink> }
             </div>
         </div>
     )

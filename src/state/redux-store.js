@@ -5,6 +5,7 @@ import postReducer from "./postData-reducer";
 import friendsReducer from "./frinedsData-reducer";
 import userReducer from "./user-reducer";
 import profileReducer from "./profileData-reducer";
+import authReducer from "./authData-reducer"
 
 let reducers = combineReducers({
     commentsData: commentsReducer,
@@ -12,7 +13,8 @@ let reducers = combineReducers({
     postsData: postReducer,
     friendsData: friendsReducer,
     usersData: userReducer,
-    profileData: profileReducer
+    profileData: profileReducer,
+    authData: authReducer,
 })
 
 let store = createStore(reducers);

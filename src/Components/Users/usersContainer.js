@@ -8,7 +8,7 @@ import Preloader from '../common/preLoader/Preloader';
 class UsersCLS extends React.Component {
     componentDidMount() {
         this.props.setIsFetching(true)
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+        axios.get("https://social-network.samuraijs.com/api/1.0/users", {withCredentials: true}).then(response => {
             this.props.setIsFetching(false) 
             this.props.setUsers(response.data.items)
         });

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import styles from './users.module.css'
 import userPhoto from '../../assets/images/user.png'
 import Preloader from '../common/preLoader/Preloader';
+import * as axios from "axios";
 
 let Users = (props) => {
     if (!props.users) {
@@ -22,8 +23,35 @@ let Users = (props) => {
                 <span>
                     <div>
                         {u.followed
-                            ? <button onClick={() => props.unFollow(u.id)}>Unfollow</button>
-                            : <button onClick={() => props.follow(u.id)}>Follow</button>}
+                            ? <button onClick={() => {
+                                
+                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                    withCredentials: true,
+                                    headers: {
+                                        'API_KEY': '74c4e112-d900-4aee-8d2f-ceb205c3bc5f'
+                                    }
+                                }).then(response => {
+                                    if (response.data.resultCode === 0) {
+                                        props.unFollow(u.id);
+                                    }
+                                })
+
+                            }}>Unfollow</button>
+
+                            : <button onClick={() => {
+                                
+                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                    withCredentials: true,
+                                    headers: {
+                                        'API_KEY': '74c4e112-d900-4aee-8d2f-ceb205c3bc5f'
+                                    }
+                                }).then(response => {
+                                    if (response.data.resultCode === 0) {
+                                        props.follow(u.id);
+                                    }
+                                })
+
+                            }}>Follow</button>}
                     </div>
                 </span>
 
@@ -36,6 +64,5 @@ let Users = (props) => {
         </div>
     )
 }
-
 
 export default Users;
