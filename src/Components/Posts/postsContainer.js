@@ -2,9 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { postsAC, setCurrentPageAC, setIsFetchingAC } from '../../state/postData-reducer';
 import Posts from './posts';
-import * as axios from 'axios';
 import Preloader from '../common/preLoader/Preloader';
-import { postsAPI } from '../../api/api';
+import { postsAPI } from '../../api/postsApi';
 
 class PostsCls extends React.Component {
     componentDidMount() {

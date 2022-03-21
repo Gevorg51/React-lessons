@@ -1,23 +1,24 @@
 import React from 'react';
-import * as axios from 'axios'
 import { connect } from "react-redux";
 import { unfollowAC, followAC, setUsersAC, setIsFetchingAC } from "../../state/user-reducer";
 import Users from "./users";
 import Preloader from '../common/preLoader/Preloader';
+import { usersAPI } from '../../api/usersAPI'; 
 
 class UsersCLS extends React.Component {
     componentDidMount() {
         this.props.setIsFetching(true)
-        axios.get("https://social-network.samuraijs.com/api/1.0/users", {withCredentials: true}).then(response => {
-            this.props.setIsFetching(false) 
-            this.props.setUsers(response.data.items)
+        usersAPI.getUsers(this.props.withCredentials).then(items => {
+            debugger;
+            this.props.setIsFetching(false)
+            this.props.setUsers(items)
         });
     };
 
     render() {
-        return<>
-            {this.props.isFetching ? <Preloader /> : null} 
-            <Users {...this.props}/> 
+        return <>
+            {this.props.isFetching ? <Preloader /> : null}
+            <Users {...this.props} />
         </>
     }
 };
