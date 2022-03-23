@@ -8,8 +8,7 @@ import { usersAPI } from '../../api/usersAPI';
 class UsersCLS extends React.Component {
     componentDidMount() {
         this.props.setIsFetching(true)
-        usersAPI.getUsers(this.props.withCredentials).then(items => {
-            debugger;
+        usersAPI.getUsers().then(items => {
             this.props.setIsFetching(false)
             this.props.setUsers(items)
         });
